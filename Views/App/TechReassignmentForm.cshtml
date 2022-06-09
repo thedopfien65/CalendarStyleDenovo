@@ -1,0 +1,87 @@
+﻿@model ReassignViewModel
+@{
+    Layout = "_Layout";
+}
+@section css
+{
+	<!-- ACB CSS -->
+	<link rel="stylesheet" href="/_content/GlobalShared/acb_assets/css/acb_scheduler_bryan.css" />
+}
+
+<!--breadcrumb start-->
+<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+	<div class="breadcrumb-title pe-3">Duty App</div>
+	<div class="ps-3">
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb mb-0 p-0">
+				<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+				</li>
+				<li class="breadcrumb-item active" aria-current="page">Reassignment Form</li>
+			</ol>
+		</nav>
+	</div>				
+</div>
+<!--end breadcrumb-->
+<!--Scheduler Module Content-->
+<div class="lead-tech-content-wrapper lead-tech-form-wrapper">
+	<h1>Reassignment Form</h1>
+	<div class="lead-tech-form-content">
+		<div class="row lt-reassign-form-row">
+			<div class="col col-md-4 col-12 order-1 lead-tech-form-actions">
+				<div class="lt-form-controls">
+					<div class="lt-form-control-buttons">
+						<div class="lt-form-control-item">
+							<h3>Available Techs</h3>
+							<div class="available-tech-list">
+								@foreach(var tech in Model.AvailableTechs) 
+								{
+								<div class="available-tech-list-item" tabindex="0"><span>@tech.Name</span></div>
+								}
+							</div>
+							<button disabled class="btn btn-primary px-5 radius-30 lt-form-button" id="select-available-tech" data-bs-toggle="modal" data-bs-target="#lt-reassign-form-modal">Select Available Tech</button>
+						</div>
+						<div class="lt-form-control-item">
+							<button class="btn btn-primary px-5 radius-30 lt-form-button" data-bs-toggle="modal" data-bs-target="#lt-reassign-form-modal">Round Robin</button>
+							<span class="lt-form-next-available-tech">Next Available Tech: @Model.AvailableTechs[0].Name</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col col-md-8 col-12 order-md-1 lead-tech-form-timeslot-info">
+				<div class="lt-timeslot-detail-viewer">
+					<div class="lt-dash-appt-client-details">
+						<h4 id="lt-dash-appt-time">@Model.TimeSlot.Timeslot.ToString("F")</h4>
+						<h6 id="lt-dash-assigned-tech">@Model.TimeSlot.Assignee</h6>
+						<p id="lt-dash-client-info">@Model.TimeSlot.ClientAddr<p>
+						<p>Note: @Model.TimeSlot.Note</p>
+					</div>
+					<div class="lt-dash-appt-equipment">
+						<h6 class="lt-dash-equipment-title">Equipment</h6>
+						<ul id="lt-dash-equipment">
+							@foreach(var eqip in Model.TimeSlot.Equipment) {
+							<li class="lt-dash-equipment-item">@eqip</li>
+							}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+				
+<!--Form Confirmation Modal-->
+<div class="modal fade" id="lt-reassign-form-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="lt-reassign-form-modal-label" aria-hidden="true">
+	<div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-body">
+		<h3>Confirm Reassignment</h3>
+		<p>You are about to assign this timeslot to [SELECTED TECH/ROUND ROBIN TECH]. Are you sure?</p>
+		<button type="button" class="btn btn-primary">Assign Tech</button>
+		<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+		</div>
+	</div>
+	</div>
+</div>
+<!--End Form Confirmation Modal-->
+				
+<!--End Scheduler Content-->

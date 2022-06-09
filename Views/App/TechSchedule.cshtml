@@ -1,0 +1,145 @@
+﻿@model TechDashViewModel
+@{
+    Layout = "_Layout";
+}
+@section css
+{
+	<!--Plugins-->
+	<link rel="stylesheet" href="/_content/GlobalShared/acb_assets/css/fullcalendar.min.css" />
+	<!-- ACB CSS -->
+	<link rel="stylesheet" href="/_content/GlobalShared/acb_assets/css/acb_scheduler_bryan.css" />
+}
+<!--breadcrumb start-->
+<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+	<div class="breadcrumb-title pe-3">Duty App</div>
+	<div class="ps-3">
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb mb-0 p-0">
+				<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+				</li>
+				<li class="breadcrumb-item active" aria-current="page">Tech Schedule View</li>
+			</ol>
+		</nav>
+	</div>				
+</div>
+<!--end breadcrumb-->
+<!--Scheduler Module Content-->
+<div class="lead-tech-content-wrapper lead-tech-dash-wrapper">
+	<div class="lt-dash-mobile-tab-toolbar" id="lt-dash-mobile-toolbar">
+		<div class="lt-dash-mobile-tab-control mtc-active" id="mtc-tech-overview">Overview</div>
+		<div class="lt-dash-mobile-tab-control" id="mtc-today">Today</div>
+		<div class="lt-dash-mobile-tab-control" id="mtc-upcoming">Upcoming</div>
+	</div>		
+	<h6>Tech 3 Schedule</h6>	
+	<div class="row">
+		<div class="col col-md-8 col-12 lt-dash-col lt-dash-calendar-col" id="lt-dash-calendar-display">
+			<div class="lt-calendar lt-dash-calendar">
+				<div class="card">
+					<div class="card-body">
+						<div class="table-responsive">
+							<div id='calendar'></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col col-md-4 col-12 lt-dash-col lt-dash-tasks-col">
+			<div class="lt-timeslot-detail-viewer lt-mobile-hide" id="tech-appointment-details">	
+				<div class="card">
+					<div class="card-header">
+						<h3 id="lt-dash-appt-time">Active Assignment - 10AM</h3>
+					</div>
+					<div class="card-body">
+						<div class="row lt-timeslot-detail-container">
+							<div class="col lt-dash-appt-client-details">
+								<h6 class="lt-dash-client-info-title">Client Info</h6>
+								<p class="lt-dash-client-info">Bryan Burnham</br>123 Fake Street</br>Nowhere, US 00000</p>
+								<p class="lt-dash-client-note">Note: Client requested spanish speaking, if possible.</p>
+							</div>
+							<div class="col lt-dash-appt-equipment">
+								<h6 class="lt-dash-equipment-title">Equipment</h6>
+								<ul id="lt-dash-equipment">
+									<li class="lt-dash-equipment-item">Door Alarm</li>
+									<li class="lt-dash-equipment-item">Outdoor Camera (2)</li>
+									<li class="lt-dash-equipment-item">Automated Flamethrower Sentry (2)</li>
+									<li class="lt-dash-equipment-item">Heads on Spikes (7)</li>
+									<li class="lt-dash-equipment-item">Polite Warning Sign (4)</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="card-footer">
+						<a href="LeadTechReassignmentForm.html"><button class="btn btn-secondary reassign-link-button">Reassign This Appointment</button></a>
+						<a href="TechUpdateStatus"><button class="btn btn-secondary reassign-link-button">Update Status</button></a>
+						<button class="btn btn-secondary tech-details-back" id="tech-details-back-btn" type="button">Go Back</button>
+					</div>
+				</div>
+			</div>
+			<div class="card tech-dash-todays-appts lt-mobile-hide-forever">
+				<div class="card-header lt-task-list-title">
+					<h3>Today's Appointments</h3>
+				</div>
+				<div class="card-body">
+					@foreach(var appt in Model.TodaysAppts)
+					{
+					<div class="lt-timeslot-display">
+						<button class="btn btn-primary tech-dash-button td-button-today" type="button">@appt.Timeslot.ToString("htt") - @appt.ClientName</button>
+					</div>
+					}
+				</div>
+			</div>
+			<!--Mobile Day Appointment View-->
+			<div class="card tech-dash-todays-appts lt-desktop-hide" id="tech-dash-todays-appts">
+				<div class="card-header lt-task-list-title">
+					<h3>Today's Appointments</h3>
+				</div>
+				<div class="card-body">
+					@foreach(var appt in Model.TodaysAppts){
+						<div class="lt-timeslot-display">
+							<button class="btn btn-primary tech-dash-button td-button-today" type="button">@appt.Timeslot.ToString("htt") - @appt.ClientName</button>
+						</div>
+					}
+				</div>
+				<div class="card-footer">
+					<button class="btn btn-secondary todays-appts-back" id="todays-appts-back-btn" type="button">Go Back</button>
+				</div>
+			<!--End Mobile Appointment View-->
+			</div>							
+			<div class="lt-task-list td-upcoming-jobs lt-mobile-hide" id="tech-dash-upcoming-assignments">								
+				<div class="card">
+					<div class="card-header lt-task-list-title">
+						<h3>Upcoming Assignments</h3>
+					</div>
+					<div class="card-body">
+
+						@foreach(var appt in Model.UpcomingAppts) 
+						{
+						<div class="td-upcoming-job-display" tabindex="0">
+							<span class="td-upcoming-job-display-item td-upcoming-job-display-date">@appt.Timeslot.ToString("MM-dd-yyyy")</span>
+							<span class="td-upcoming-job-display-item td-upcoming-job-display-time">@appt.Timeslot.ToString("htt")</span>
+							<span class="td-upcoming-job-display-item td-upcoming-job-display-client">@appt.ClientName</span>
+						</div>
+						}										
+					</div>
+					<div class="card-footer lt-reassignment-controls">
+						<button disabled class="btn btn-secondary" id="reassign-appt"><a id="reassign-appt-link" href="LeadTechReassignmentForm.html">Reassign Appointment</a></button>
+						<button class="btn btn-secondary">See All</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>				
+<!--End Scheduler Content-->
+@section Scripts
+{
+	<!--Plugins-->
+	<script src="/_content/GlobalShared/acb_assets/js/fullcalendar.min.js"></script>
+	<script src="/_content/GlobalShared/acb_assets/js/acb_techSchedule_bryan.js" asp-append-version="true"></script>
+	<script>
+		$(document).ready(function(){
+			initCalendar();
+			initTechScheduleView();
+		});
+	</script>
+}

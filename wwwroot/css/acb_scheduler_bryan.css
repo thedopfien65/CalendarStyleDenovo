@@ -1,0 +1,257 @@
+.lead-tech-content-wrapper {
+	width: 100%;
+	background-color: white;
+	padding: 15px;
+	border-radius: 3px;
+	box-shadow: 2px 3px 2px #00000044;
+}
+
+#lt-dash-mobile-toolbar {
+	display: none;
+}
+
+.fc-toolbar > .fc-toolbar-chunk:nth-child(2) {
+	flex: 1;
+	justify-content: space-between;
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+.fc-toolbar-chunk > div {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.lead-tech-form-actions {
+	border-right: 2px solid #aaaaaa;
+}
+
+.lt-form-button {
+	width: 100%;
+}
+
+.lt-form-next-available-tech {
+	float: right;
+	font-size: 12px;
+}
+
+.lt-form-control-item {
+	margin: 10px;
+}
+
+.available-tech-list {
+	margin-bottom: 10px;
+}
+
+.available-tech-list-item {
+	padding: 7px;
+	width: 100%;
+	background-color: #2d882d;
+	color: white;
+	border-radius: 5px;
+	margin-top: 3px;
+	margin-bottom: 2px;
+}
+
+.available-tech-list-item:hover, .available-tech-list-item:focus {
+	cursor: pointer;
+	background-color: #30cc30;
+}
+
+.available-tech-list-item:focus {
+	outline: 3px solid #cdcdcd66;
+}
+
+.fc-daygrid-day:hover {
+	cursor: pointer;
+	background-color: #d8ffd8;
+}
+
+.timeslot-detail-button, .tech-dash-button {
+	width: 100%;
+	margin-bottom: 7px;
+	text-align: left;
+}
+
+.lt-tech-appointment-button {
+	padding-left: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+	background-color: #ebf8ff;
+	border-radius: 3px;
+}
+
+.lt-tech-appointment-button:hover {
+	cursor:pointer;
+	background-color: #3fade8;
+	color: white;
+}
+
+.lt-pending-reassign-display, .td-upcoming-job-display {
+	padding: 10px;
+	width: 100%;
+	margin-bottom: 7px;
+	text-align: left;
+	border-radius: 5px;
+	font-weight: 500;
+}
+
+.lt-pending-reassign-display {
+	background-color: #ffd122;
+}
+
+.td-upcoming-job-display {
+	background-color: #3254a4;
+	color: white;
+}
+
+.lt-pending-reassign-display:hover {
+	background-color: #aa9239;
+	color: white;
+	cursor: pointer;
+	transition: background-color 0.1s linear;
+}
+
+.lt-pending-reassign-display-active, .lt-pending-reassign-display:focus {
+	outline: #ffd12266 solid 5px;
+	transition: outline 0.1s linear;
+	background-color: #aa9239;
+	color: white;
+}
+
+#reassign-appt-link, #tech-schedule-link {
+	text-decoration: none;
+	color: white;
+}
+
+.lt-team-member-display {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+	margin-bottom: 7px;
+	text-align: left;
+	background-color: #2d882d;
+	color: white;
+	border-radius: 5px;
+	font-weight: 500;
+}
+
+.lt-team-member-display:hover {
+	cursor: pointer;
+	background-color: #30cc30;
+	transition: background-color 0.1s linear;
+}
+
+.lt-team-member-display-active, .lt-team-member-display:focus {
+	outline: #2d882d66 solid 5px;
+	transition: outline 0.1s linear;
+	background-color: #30cc30;
+}
+
+.lt-team-member-controls, .lt-reassignment-controls {
+	display: flex;
+	justify-content: space-between;
+}
+
+.lt-desktop-hide {
+	display: none;
+}
+
+/*Tablet Breakpoint (768px)*/
+@media screen and (max-width: 768px) {
+	.timeslot-detail-button, .lt-pending-reassign-display > span, .lt-team-member-display > span, .lt-reassignment-controls > button, .lt-team-member-controls > button, .lt-dash-appt-client-details > p, .lt-dash-equipment-item, .lt-tech-appointment-button, .reassign-link-button, .appt-detail-back, .timeslot-display-back, .todays-appts-back, .tech-details-back {
+		font-size: 12px; 
+	}
+	
+	p {
+		font-size: 12px;
+	}
+	
+	.fc-toolbar-title {
+		font-size: 16px !important;
+	}
+	
+	.fc .fc-button {
+		font-size: 12px !important;
+	}
+	
+	.fc-toolbar > .fc-toolbar-chunk:nth-child(2) {
+		margin-left: 2px;
+		margin-right: 2px;
+	}
+	
+	.lead-tech-form-actions {
+		border-right: 0px solid #ffffff;
+	}
+	
+	.fc-list-day-text, .fc-list-day-side-text, .fc-daygrid-event, .fc-daygrid-day-events, fc-event-main-frame, .fc-event-title, .fc-event-main {
+		pointer-events: none;
+	}
+	
+	.fc-list-event {
+		cursor: pointer;
+	}
+}
+
+/*Mobile Breakpoint (565px)*/
+@media screen and (max-width: 565px){
+	#lt-dash-mobile-toolbar {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 15px;
+	}
+	
+	.lt-dash-mobile-tab-toolbar {
+		width: 100%;
+	}
+	
+	.lt-dash-mobile-tab-control:first-child {
+		border-top-left-radius: 3px;
+		border-bottom-left-radius: 3px;
+		border-left: 2px solid #cdcdcd;
+		border-right: 2px solid #cdcdcd;
+
+	}
+	
+	.lt-dash-mobile-tab-control:last-child {
+		border-top-right-radius: 3px;
+		border-bottom-right-radius: 3px;
+		border-left: 2px solid #cdcdcd;
+		border-right: 2px solid #cdcdcd;
+	}
+	
+	.lt-dash-mobile-tab-control {
+		background-color: #eeffff;
+		border-top: 2px solid #cdcdcd;
+		border-bottom: 2px solid #cdcdcd;
+		padding: 15px;
+		text-align: center;
+		flex: 1;
+		cursor: pointer;
+	}
+	
+	.lt-mobile-hide {
+		display: none;
+	}
+	
+	.lt-mobile-hide-forever {
+		display: none;
+	}
+	
+	.mtc-active {
+		background-color: #0d6efe;
+		color: white;
+	}
+	
+	#lt-dash-equipment {
+		list-style-type: none;
+	}
+	
+	#lt-dash-equipment > li {
+		margin-left: -31px;
+	}
+}

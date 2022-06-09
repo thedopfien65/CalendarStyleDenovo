@@ -1,0 +1,216 @@
+﻿@model LeadTechDashViewModel
+@{
+    Layout = "_Layout";
+}
+@section css
+{
+	<!--Plugins-->
+	<link rel="stylesheet" href="/_content/GlobalShared/acb_assets/css/fullcalendar.min.css" />
+	<!-- ACB CSS -->
+	<link rel="stylesheet" href="/_content/GlobalShared/acb_assets/css/acb_scheduler_bryan.css" />
+}
+<!--breadcrumb start-->
+<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+	<div class="breadcrumb-title pe-3">Duty App</div>
+	<div class="ps-3">
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb mb-0 p-0">
+				<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+				</li>
+				<li class="breadcrumb-item active" aria-current="page">Lead Tech Dashboard</li>
+			</ol>
+		</nav>
+	</div>				
+</div>
+<!--end breadcrumb-->
+			
+<!--Scheduler Module Content-->
+<div class="lead-tech-content-wrapper lead-tech-dash-wrapper">
+	<div class="lt-dash-mobile-tab-toolbar" id="lt-dash-mobile-toolbar">
+		<div class="lt-dash-mobile-tab-control mtc-active" id="mtc-overview">Overview</div>
+		<div class="lt-dash-mobile-tab-control" id="mtc-reassign">Reassignments</div>
+		<div class="lt-dash-mobile-tab-control" id="mtc-techs">Techs</div>
+	</div>
+					
+	<div class="row">
+					
+		<div class="col col-md-8 col-12 lt-dash-col lt-dash-calendar-col">
+			<div class="lt-calendar lt-dash-calendar" id="lt-dash-calendar-display" >
+				<div class="card">
+					<div class="card-body">
+						<div class="table-responsive">
+							<div id='calendar'></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row lt-timeslot-viewer">
+				<div class="col col-md-6 col-12 lt-timeslot-list lt-mobile-hide-forever" id="lt-timeslot-list">
+					<div class="card">
+						<div class="card-header lt-task-list-title">
+							<h3 id="task-list-title-text">Thursday, May 12, 2022</h3>
+						</div>
+						<div class="card-body" id="lt-dash-day-timeslot-list">
+							<div class="lt-timeslot-display">
+								<button class="btn btn-primary timeslot-detail-button" type="button" data-bs-toggle="collapse" data-bs-target="#timeslot-collapse-1">10AM - 1 Appointment</button>
+								<div class="collapse lt-timeslot-techs-collapse" id="timeslot-collapse-1">
+									<div class="lt-tech-appointment-button" data-appt-id="1">Tech 1 | Client Name | City/Address</div>
+								</div>
+							</div>
+							<div class="lt-timeslot-display">
+								<button class="btn btn-primary timeslot-detail-button" type="button" data-bs-toggle="collapse" data-bs-target="#timeslot-collapse-2">11AM - 4 Appointments</button>
+								<div class="collapse lt-timeslot-techs-collapse" id="timeslot-collapse-2">
+									<div class="lt-tech-appointment-button" data-appt-id="2">Tech 2 | Client Name | City/Address</div>
+									<div class="lt-tech-appointment-button" data-appt-id="3">Tech 4 | Client Name | City/Address</div>
+									<div class="lt-tech-appointment-button" data-appt-id="4">Tech 5 | Client Name | City/Address</div>
+									<div class="lt-tech-appointment-button" data-appt-id="5">Tech 8 | Client Name | City/Address</div>
+								</div>
+							</div>
+							<div class="lt-timeslot-display">
+								<button class="btn btn-primary timeslot-detail-button" type="button" data-bs-toggle="collapse" data-bs-target="#timeslot-collapse-3">1PM - 1 Appointments</button>
+								<div class="collapse lt-timeslot-techs-collapse" id="timeslot-collapse-3">
+									<div class="lt-tech-appointment-button" data-appt-id="6">Tech 3 | Client Name | City/Address</div>
+								</div>
+							</div>
+							<div class="lt-timeslot-display">
+								<button class="btn btn-primary timeslot-detail-button" type="button" data-bs-toggle="collapse" data-bs-target="#timeslot-collapse-4">2PM - 1 Appointment</button>
+								<div class="collapse lt-timeslot-techs-collapse" id="timeslot-collapse-4">
+									<div class="lt-tech-appointment-button" data-appt-id="7">Tech 6 | Client Name | City/Address</div>
+								</div>
+							</div>
+							<div class="lt-timeslot-display">
+								<button class="btn btn-primary timeslot-detail-button" type="button" data-bs-toggle="collapse" data-bs-target="#timeslot-collapse-5">4PM - 2 Appointments</button>
+								<div class="collapse lt-timeslot-techs-collapse" id="timeslot-collapse-5">
+									<div class="lt-tech-appointment-button" data-appt-id="8">Tech 7 | Client Name | City/Address</div>
+									<div class="lt-tech-appointment-button" data-appt-id="9">Tech 9 | Client Name | City/Address</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--Timeslot view for mobile displays-->
+				<div class="col col-md-6 col-12 lt-timeslot-list lt-desktop-hide" id="lt-timeslot-list-mobile">
+					<div class="card">
+						<div class="card-header lt-task-list-title">
+							<h3>Thursday, May 12, 2022: 11AM</h3>
+						</div>
+						<div class="card-body">
+							<div class="lt-timeslot-display">
+								<button class="btn btn-primary timeslot-detail-button timeslot-detail-button-mobile" type="button">Tech 1 - Client Name</button>
+							</div>
+							<div class="lt-timeslot-display">
+								<button class="btn btn-primary timeslot-detail-button timeslot-detail-button-mobile" type="button">Tech 4 - Client Name</button>
+							</div>
+							<div class="lt-timeslot-display">
+								<button class="btn btn-primary timeslot-detail-button timeslot-detail-button-mobile" type="button">Tech 5 - Client Name</button>
+							</div>
+							<div class="lt-timeslot-display">
+								<button class="btn btn-primary timeslot-detail-button timeslot-detail-button-mobile" type="button">Tech 7 - Client Name</button>
+							</div>
+						</div>
+						<div class="card-footer">
+							<button class="btn btn-secondary timeslot-display-back" id="timeslot-display-back-btn" type="button">Go Back</button>
+						</div>
+					</div>
+				</div>
+				<!--End Timeslot View for Mobile Displays-->
+				<div class="col col-md-6 col-12 lt-timeslot-details lt-mobile-hide" id="lt-appt-details">
+					<div class="lt-timeslot-detail-viewer">
+										
+						<div class="card">
+							<div class="card-header">
+								<h4 id="lt-dash-appt-time">11AM</h4>
+								<h6 id="lt-dash-appt-assignee">Tech 4</h6>
+							</div>
+							<div class="card-body">
+								<div class="row lt-timeslot-detail-container">
+									<div class="col lt-dash-appt-client-details">
+										<h6 class="lt-dash-client-info-title" id="dash-client-title">Client Info</h6>
+										<p class="lt-dash-client-name" id="dash-client-name">Bryan Burnham</p>
+										<p class="lt-dash-client-address" id="dash-client-address">123 Fake Street</br>Nowhere, US 00000</p>
+										<p class="lt-dash-client-note" id="dash-client-note">Note: Client requested spanish speaking, if possible.</p>
+									</div>
+									<div class="col lt-dash-appt-equipment">
+										<h6 class="lt-dash-equipment-title">Equipment</h6>
+										<ul id="lt-dash-equipment">
+											<li class="lt-dash-equipment-item">Door Alarm</li>
+											<li class="lt-dash-equipment-item">Outdoor Camera (2)</li>
+											<li class="lt-dash-equipment-item">Automated Flamethrower Sentry (2)</li>
+											<li class="lt-dash-equipment-item">Heads on Spikes (7)</li>
+											<li class="lt-dash-equipment-item">Polite Warning Sign (4)</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="card-footer">
+								<a href="TechReassignmentForm/1"><button class="btn btn-secondary reassign-link-button">Reassign This Appointment</button></a>
+								<button class="btn btn-secondary appt-detail-back" id="appt-detail-back-btn" type="button">Go Back</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+						
+		<div class="col col-md-4 col-12 lt-dash-col lt-dash-tasks-col">
+			<div class="lt-task-list lt-urgent-reassign lt-mobile-hide" id="lt-pending-assignments">								
+				<div class="card">
+					<div class="card-header lt-task-list-title">
+						<h3>Pending Reassignment Requests</h3>
+					</div>
+					<div class="card-body">
+						@foreach(var appt in Model.PendingAppts) 
+						{
+						<div class="lt-pending-reassign-display" tabindex="0">
+							<span class="lt-pending-reassign-item lt-pending-reassign-date">@appt.Timeslot.ToString("MM-dd-yyyy")</span>
+							<span class="lt-pending-reassign-item lt-pending-reassign-time">@appt.Timeslot.ToString("htt")</span>
+							<span class="lt-pending-reassign-item lt-pending-reassign-tech">@appt.Assignee</span>
+							<span class="lt-pending-reassign-item lt-pending-reassign-client">@appt.ClientName</span>
+						</div>
+						}									
+					</div>
+					<div class="card-footer lt-reassignment-controls">
+						<button disabled class="btn btn-secondary" id="reassign-appt"><a id="reassign-appt-link" href="TechReassignmentForm">Reassign Appointment</a></button>
+						<button class="btn btn-secondary">See All</button>
+					</div>
+				</div>
+			</div>
+							
+			<div class="lt-task-list lt-team-members lt-mobile-hide" id="lt-team-list">						
+				<div class="card">
+					<div class="card-header lt-task-list-title">
+						<h3>Team</h3>
+					</div>
+					<div class="card-body">
+						@foreach(var tech in Model.TechTeam) 
+						{
+						<div class="lt-team-member-display" tabindex="0">
+							<span class="lt-team-member-item lt-team-member-name">@tech.Name</span>
+							<span class="lt-team-member-item lt-team-member-appts">@tech.NumAppts Assignments</span>
+						</div>
+						}			
+					</div>
+					<div class="card-footer lt-team-member-controls">
+						<button disabled class="btn btn-secondary" id="view-tech-schedule"><a id="tech-schedule-link" href="TechSchedule">View Tech Schedule</a></button>
+						<button class="btn btn-secondary">See All</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>				
+<!--End Scheduler Content-->
+@section Scripts
+{
+	<!--Plugins-->
+	<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script> 
+	<script src="/_content/GlobalShared/acb_assets/js/fullcalendar.min.js"></script>
+	<!--ACB JS-->
+	<script src="/_content/GlobalShared/acb_assets/js/acb_ltDashboard_bryan.js" asp-append-version="true"></script>
+	<script>
+	$(document).ready(function(){
+		initCalendar();
+		initLeadTechView();
+	});
+	</script>
+}
