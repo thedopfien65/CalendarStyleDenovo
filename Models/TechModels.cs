@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Duty.Models
-{
     //this would be an entity later methinks
     public class TechAppointment
     {
@@ -28,4 +26,3 @@ namespace Duty.Models
     {
         public Appointment TimeSlot { get; set; }
     }
-}

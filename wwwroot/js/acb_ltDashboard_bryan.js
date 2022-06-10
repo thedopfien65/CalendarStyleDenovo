@@ -140,27 +140,7 @@ function initCalendar() {
 				toggleMobileElements("#lt-dash-calendar-display", "#lt-timeslot-list-mobile", "lt-mobile-hide", "lt-desktop-hide");
 			},
 			eventDisplay: 'block',
-			events: function (fetchInfo, successCallback, failureCallback) {
-				$.ajax({
-					url: '/App/GetCalendarData',
-					type: "GET",
-					dataType: "JSON",
-
-					success: function (result) {
-						var events = [];
-						$.each(result, function (i, data) {
-							events.push({
-								id: data.id,
-								title: data.title,
-								start: data.start
-							});
-						});
-						debugger;
-						successCallback(events);
-						console.log(calendar.getEvents());
-					}
-				});
-			}
+			events: '/Home/GetCalendarData'
 		});
 	console.log(calendar.getEvents());
 	calendar.render();

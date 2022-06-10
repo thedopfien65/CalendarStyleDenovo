@@ -51,28 +51,7 @@ function initCalendar() {
 			toggleMobileElements("#lt-dash-calendar-display", "#tech-dash-todays-appts", "lt-mobile-hide", "lt-desktop-hide");
 		},
 		eventDisplay: 'block',
-		events: [{
-			"title": "3 Appoinments",
-			"start": "2022-06-11T10:00:00"
-		}, {
-			"title": "1 Appointment",
-			"start": "2022-06-12T10:00:00"
-		}, {
-			"title": "4 Appointments",
-			"start": "2022-06-12T11:00:00"
-		}, {
-			"title": "1 Appointment",
-			"start": "2022-06-12T13:00:00"
-		}, {
-			"title": "1 Appointment",
-			"start": "2022-06-12T14:00:00"
-		}, {
-			"title": "2 Appointments",
-			"start": "2022-06-12T16:00:00"
-		}, {
-			"title": "1 Appointment",
-			"start": "2022-06-13T12:00:00"
-		}],
+		events: '/Home/GetCalendarData'
 	});
 	calendar.render();
 	console.log(calendar.getEvents());

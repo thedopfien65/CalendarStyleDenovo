@@ -45,3 +45,8 @@ C:\demoCode\CalendarTest\bin\Debug\net5.0\System.Web.WebPages.Deployment.dll
 C:\demoCode\CalendarTest\bin\Debug\net5.0\System.Web.WebPages.Razor.dll
 C:\demoCode\CalendarTest\bin\Debug\net5.0\System.Web.WebPages.dll
 C:\demoCode\CalendarTest\bin\Debug\net5.0\Microsoft.Web.Infrastructure.dll
+C:\demoCode\CalendarTest\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\demoCode\CalendarTest\obj\Debug\net5.0\Razor\Views\Home\LeadTechSchedule.cshtml.g.cs
+C:\demoCode\CalendarTest\obj\Debug\net5.0\Razor\Views\Home\TechReassignmentForm.cshtml.g.cs
+C:\demoCode\CalendarTest\obj\Debug\net5.0\Razor\Views\Home\TechSchedule.cshtml.g.cs
+C:\demoCode\CalendarTest\obj\Debug\net5.0\Razor\Views\Home\TechUpdateStatus.cshtml.g.cs

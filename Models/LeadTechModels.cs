@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 
-namespace Duty.Models
-{
     //this would be an entity later methinks
     public class Appointment
     {
@@ -59,4 +57,3 @@ namespace Duty.Models
         [JsonProperty("start")]
         public string Start { get; set; }
     }
-}
