@@ -161,6 +161,10 @@
 	display: none;
 }
 
+.lt-back-button-desktop-hide {
+	display: none;
+}
+
 /*Tablet Breakpoint (768px)*/
 @media screen and (max-width: 768px) {
 	.timeslot-detail-button, .lt-pending-reassign-display > span, .lt-team-member-display > span, .lt-reassignment-controls > button, .lt-team-member-controls > button, .lt-dash-appt-client-details > p, .lt-dash-equipment-item, .lt-tech-appointment-button, .reassign-link-button, .appt-detail-back, .timeslot-display-back, .todays-appts-back, .tech-details-back {
@@ -199,6 +203,7 @@
 
 /*Mobile Breakpoint (565px)*/
 @media screen and (max-width: 565px){
+
 	#lt-dash-mobile-toolbar {
 		display: flex;
 		justify-content: space-between;
@@ -253,5 +258,9 @@
 	
 	#lt-dash-equipment > li {
 		margin-left: -31px;
+	}
+
+	.lt-back-button-desktop-hide {
+		display: block;
 	}
 }

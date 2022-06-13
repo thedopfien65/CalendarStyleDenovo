@@ -1,7 +1,15 @@
-function toggleMobileElements(ele1, ele2, class1, class2){
+function toggleMobileElements(ele1, ele2, class1, class2) {
 	$(ele1).addClass(class1);
 	$(ele2).removeClass(class2);
-}	
+}
+
+function removePermaHide(ele, class1) {
+	if (screen.width < 525) {
+		$(ele).removeClass(class1);
+	} else {
+		return;
+    }
+}
 		
 function clearScreenMobile(){
 	$("#lt-timeslot-list-mobile").addClass("lt-mobile-hide");
@@ -43,10 +51,8 @@ function addCallsForAppts() {
 }
 
 function dateClickHandler(d) {
-	//console.log(d.date);
-	//alert("ajax call to grab day appointments");
 	$.ajax({
-		url: '/App/GetDateAppointments/' + d.date,
+		url: '/Home/GetDateAppointments',
 		type: "GET",
 		dataType: "JSON",
 	}).done(function (json) {
@@ -55,7 +61,7 @@ function dateClickHandler(d) {
 
 		document.getElementById('lt-dash-day-timeslot-list').innerHTML = "";
 
-		for (var i = 0; i < json.Timeslots.length; i++) {
+		for (var i = 0; i < json.timeslots.length; i++) {
 			//create outer div
 			var newTimeslot = document.createElement('div');
 			newTimeslot.classList = "lt-timeslot-display";
@@ -66,19 +72,19 @@ function dateClickHandler(d) {
 			newTimeslotButton.setAttribute("type", "button");
 			newTimeslotButton.setAttribute("data-bs-toggle", "collapse");
 			newTimeslotButton.setAttribute("data-bs-target", "#timeslot-collapse-" + (i + 1));
-			newTimeslotButton.innerHTML = json.Timeslots[i].Time;
+			newTimeslotButton.innerHTML = json.timeslots[i].Time;
 
 			//create container for timeslot appointments
 			var newTimeslotHolder = document.createElement('div');
 			newTimeslotHolder.classList = "collapse lt-timeslot-techs-colapse";
 			newTimeslotHolder.setAttribute("id", "timeslot-collapse-" + (i + 1));
 
-			for (var j = 0; j < json.Timeslots[i].Appointments.length; j++) {
+			for (var j = 0; j < json.timeslots[i].appointments.length; j++) {
 				var newTimeslotAppt = document.createElement('div');
 				newTimeslotAppt.classList = "lt-tech-appointment-button";
-				newTimeslotAppt.setAttribute("data-appt-id", json.Timeslots[i].Appointments[j].Id);
+				newTimeslotAppt.setAttribute("data-appt-id", json.timeslots[i].appointments[j].id);
 
-				var buttonLabelString = json.Timeslots[i].Appointments[j].Assignee + " | " + json.Timeslots[i].Appointments[j].ClientName + " | " + json.Timeslots[i].Appointments[j].ClientAddr;
+				var buttonLabelString = json.timeslots[i].appointments[j].assignee + " | " + json.timeslots[i].appointments[j].clientName + " | " + json.timeslots[i].appointments[j].clientAddr;
 				newTimeslotAppt.innerHTML = buttonLabelString;
 
 				newTimeslotHolder.appendChild(newTimeslotAppt);
@@ -142,9 +148,7 @@ function initCalendar() {
 			eventDisplay: 'block',
 			events: '/Home/GetCalendarData'
 		});
-	console.log(calendar.getEvents());
 	calendar.render();
-	console.log(calendar.getEvents());
 }
 			
 //mobile view tab controls
@@ -190,6 +194,7 @@ function initLeadTechView() {
 		//forward-back controls for navigation of overview (lead tech)
 		$(".timeslot-detail-button-mobile").on("click", function () {
 			toggleMobileElements("#lt-timeslot-list-mobile", "#lt-appt-details", "lt-desktop-hide", "lt-mobile-hide");
+			removePermaHide("#lt-timeslot-list-mobile", "lt-desktop-perma-hide");
 		});
 
 		$("#appt-detail-back-btn").on("click", function () {
